@@ -1,0 +1,33 @@
+{
+    "name": "gnugat/pomm-foundation-bundle",
+    "description": "A pomm-project/foundation integration in symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Loïc Faugeron",
+            "email": "faugeron.loic+pomm-foundation-bundle@gmail.com",
+            "homepage": "http://gnugat.github.io",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gnugat\\PommFoundationBundle\\": ""
+        }
+    },
+    "require": {
+        "pomm-project/foundation": "^2.0@rc",
+        "symfony/http-kernel": "^2.3",
+        "symfony/dependency-injection": "^2.3",
+        "symfony/config": "^2.3",
+        "symfony/yaml": "^2.3"
+    },
+    "require-dev": {
+        "memio/spec-gen": "^0.4",
+        "phpspec/phpspec": "^2.3",
+        "phpunit/phpunit": "^4.6",
+        "symfony/framework-bundle": "^2.3",
+        "symfony/finder": "^2.3"
+    }
+}

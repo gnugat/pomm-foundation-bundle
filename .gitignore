@@ -1,0 +1,6 @@
+/composer.lock
+/vendor
+/phpspec.yml
+/phpunit.xml
+/Tests/app/cache
+/Tests/app/logs
