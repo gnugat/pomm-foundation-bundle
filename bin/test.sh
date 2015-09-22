@@ -10,5 +10,4 @@ echo ''
 echo ' [OK] Test environment built'
 echo ''
 
-vendor/bin/phpunit \
-    vendor/bin/phpspec run --no-interaction -f dot
+vendor/bin/phpunit

@@ -1,1 +1,9 @@
 services:
+    gnugat_pomm_foundation.query_manager:
+        class: Gnugat\PommFoundationBundle\Service\ConnectionQueryManager
+        arguments:
+            - "%database_host%"
+            - "%database_port%"
+            - "%database_name%"
+            - "%database_user%"
+            - "%database_password%"
