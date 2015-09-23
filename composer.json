@@ -26,6 +26,7 @@
     "require-dev": {
         "incenteev/composer-parameter-handler": "^2.1",
         "phpunit/phpunit": "^4.6",
+        "symfony/console": "^2.3",
         "symfony/framework-bundle": "^2.3",
         "symfony/finder": "^2.3"
     },
