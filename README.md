@@ -17,11 +17,23 @@ Finally it provides the following commands:
 
 ## Installation
 
-To install `gnugat/pomm-foundation-bundle`, run the following command:
+First provide the database configuration:
+
+```
+# app/config/parameters.yml.dist
+parameters:
+    database_host: 127.0.0.1
+    database_port: 5432
+    database_name: gnugat_pomm_foundation
+    database_user: postgres
+    database_password: ~
+```
+
+Then install `gnugat/pomm-foundation-bundle` using [Composer](https://getcomposer.org/download/):
 
     composer require gnugat/pomm-foundation-bundle:^0.1
 
-Then register `Gnugat\PommFoundationBundle\GnugatPommFoundationBundle` in `AppKernel.php`
+Finally register `Gnugat\PommFoundationBundle\GnugatPommFoundationBundle` in `AppKernel.php`.
 
 ## Further documentation
 
