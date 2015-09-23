@@ -1,2 +1,5 @@
+imports:
+    - { resource: parameters.yml }
+
 framework:
     secret: "Three can keep a secret, if two of them are dead."

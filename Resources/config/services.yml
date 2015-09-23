@@ -1,1 +1,34 @@
 services:
+    gnugat_pomm_foundation.query_manager:
+        class: Gnugat\PommFoundationBundle\Service\ConnectionQueryManager
+        arguments:
+            - "%database_host%"
+            - "%database_port%"
+            - "%database_name%"
+            - "%database_user%"
+            - "%database_password%"
+
+    gnugat_pomm_foundation.close_connection_listener:
+        class: Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener
+        arguments:
+            - "@gnugat_pomm_foundation.query_manager"
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
+    gnugat_pomm_foundation.create_database:
+        class: Gnugat\PommFoundationBundle\Service\CreateDatabase
+        arguments:
+            - "%database_host%"
+            - "%database_port%"
+            - "%database_name%"
+            - "%database_user%"
+            - "%database_password%"
+
+    gnugat_pomm_foundation.drop_database:
+        class: Gnugat\PommFoundationBundle\Service\DropDatabase
+        arguments:
+            - "%database_host%"
+            - "%database_port%"
+            - "%database_name%"
+            - "%database_user%"
+            - "%database_password%"

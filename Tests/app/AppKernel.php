@@ -18,7 +18,7 @@ class AppKernel extends Kernel
     {
         return array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Gnugat\PommFoundationBundle\PommFoundationBundle(),
+            new Gnugat\PommFoundationBundle\GnugatPommFoundationBundle(),
         );
     }
 
