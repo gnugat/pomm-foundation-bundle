@@ -24,6 +24,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $kernel = new \AppKernel('test', false);
         $kernel->boot();
         $application = new Application($kernel);
+        $application->setAutoExit(false);
         $this->applicationTester = new ApplicationTester($application);
     }
 
