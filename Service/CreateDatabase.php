@@ -60,7 +60,7 @@ class CreateDatabase
     {
         $command = 'psql';
         $connectionOptions = "-h {$this->host} -p {$this->port} -U {$this->username}";
-        if (null === $this->password) {
+        if (null !== $this->password) {
             $command = "PGPASSWORD={$this->password} $command";
         } else {
             $connectionOptions .= ' -w';
