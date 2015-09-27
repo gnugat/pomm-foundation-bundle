@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.1: Fixed Commands
+
+* fixed condition to set database password
+* fixed CommandTest by preventing auto exit
+
 ## v0.1.0
 
 This first version provides a `QueryManagerInterface` implementation with the following features:
