@@ -14,6 +14,7 @@ namespace Gnugat\PommFoundationBundle\Service;
 class CreateDatabase
 {
     const EXIT_SUCCESS = 0;
+    const DATABASE_ALREADY_EXISTS = '1';
 
     /**
      * @var string
@@ -64,6 +65,10 @@ class CreateDatabase
             $command = "PGPASSWORD={$this->password} $command";
         } else {
             $connectionOptions .= ' -w';
+        }
+        exec("$command -lqt | cut -d \| -f 1 | grep -w {$this->database} | wc -l", $output);
+        if (self::DATABASE_ALREADY_EXISTS === $output[0]) {
+            return;
         }
         exec("$command -c 'CREATE DATABASE {$this->database};' $connectionOptions 2>&1", $output, $exitCode);
         if (self::EXIT_SUCCESS !== $exitCode) {

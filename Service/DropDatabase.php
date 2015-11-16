@@ -65,7 +65,7 @@ class DropDatabase
         } else {
             $connectionOptions .= ' -w';
         }
-        exec("$command -c 'DROP DATABASE {$this->database};' $connectionOptions 2>&1", $output, $exitCode);
+        exec("$command -c 'DROP DATABASE IF EXISTS {$this->database};' $connectionOptions 2>&1", $output, $exitCode);
         if (self::EXIT_SUCCESS !== $exitCode) {
             throw new \RuntimeException(implode("\n", $output), $exitCode);
         }
