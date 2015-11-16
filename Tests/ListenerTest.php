@@ -30,7 +30,7 @@ class ListenerTest extends PHPUnit_Framework_TestCase
      */
     public function it_has_a_close_connection_listener()
     {
-        $listeners = $this->container->get('event_dispatcher')->getListeners('kernel.response');
+        $listeners = $this->container->get('event_dispatcher')->getListeners('kernel.terminate');
         $isCloseConnectionIn = function ($listeners) {
             foreach ($listeners as $listener) {
                 if ($listener[0] instanceof ClosingConnectionListener) {

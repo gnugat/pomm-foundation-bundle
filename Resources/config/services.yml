@@ -13,7 +13,7 @@ services:
         arguments:
             - "@gnugat_pomm_foundation.query_manager"
         tags:
-            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            - { name: kernel.event_listener, event: kernel.terminate, method: onKernelTerminate }
 
     gnugat_pomm_foundation.create_database:
         class: Gnugat\PommFoundationBundle\Service\CreateDatabase

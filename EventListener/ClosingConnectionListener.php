@@ -12,7 +12,7 @@
 namespace Gnugat\PommFoundationBundle\EventListener;
 
 use Gnugat\PommFoundationBundle\Service\ConnectionQueryManager;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 class ClosingConnectionListener
 {
@@ -30,9 +30,9 @@ class ClosingConnectionListener
     }
 
     /**
-     * @param FilterResponseEvent $event
+     * @param PostResponseEvent $event
      */
-    public function onKernelResponse(FilterResponseEvent $event)
+    public function onKernelTerminate(PostResponseEvent $event)
     {
         $this->connectionQueryManager->shutdown();
     }
