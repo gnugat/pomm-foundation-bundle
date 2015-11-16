@@ -31,7 +31,7 @@ parameters:
 
 Then install `gnugat/pomm-foundation-bundle` using [Composer](https://getcomposer.org/download/):
 
-    composer require gnugat/pomm-foundation-bundle:^0.1
+    composer require gnugat/pomm-foundation-bundle:^0.2
 
 Finally register `Gnugat\PommFoundationBundle\GnugatPommFoundationBundle` in `AppKernel.php`.
 
