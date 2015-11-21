@@ -66,7 +66,7 @@ class CreateDatabase
         } else {
             $connectionOptions .= ' -w';
         }
-        exec("$command -lqt | cut -d \| -f 1 | grep -w {$this->database} | wc -l", $output);
+        exec("$command $connectionOptions -lqt | cut -d \| -f 1 | grep -w {$this->database} | wc -l", $output);
         if (self::DATABASE_ALREADY_EXISTS === $output[0]) {
             return;
         }
