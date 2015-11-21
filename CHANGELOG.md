@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.2.1: fixed CreateDatabae
+
+Previously `CreateDatabase` would try to list databases (in order to check if it already exists)
+without setting the database user, which could cause the following PostgreSQL error:
+
+```
+psql: FATAL:  role "<database_user>" does not exist
+```
+
+Now fixed!
+
 ## v0.2.0: terminate
 
 This second version delays the closing of the database connection to the very last moment.
