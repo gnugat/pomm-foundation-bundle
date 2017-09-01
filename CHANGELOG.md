@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.3.0: PHP 7.1
+
+* Bumped requirement to PHP 7.1
+* Removed addClassesToCompile for Symfony 4 compatibility
+* Created service `PommProject\Foundation\QueryManager\QueryManagerInterface`
+  (`gnugat_pomm_foundation.query_manager` is now an alias of this service,
+  to keep BC, but it will drop in future versions)
+
+> **BC break**: void return type hints are used, making this bundle incompatible
+> with applications running on PHP < 7.1
+
 ## v0.2.1: fixed CreateDatabae
 
 Previously `CreateDatabase` would try to list databases (in order to check if it already exists)

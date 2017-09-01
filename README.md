@@ -4,11 +4,13 @@ A [pomm-project/foundation](https://github.com/pomm-project/Foundation) integrat
 
 This bundle provides the following services:
 
-* `gnugat_pomm_foundation.query_manager`: creates a `QueryManagerInterface` implementation, to use in your services
+* `PommProject\Foundation\QueryManager\QueryManagerInterface`:
+  creates a `QueryManagerInterface` implementation, to use in your services
 
 It also provides the following event listeners
 
-* `gnugat_pomm_foundation.closing_connection_listener`: closes the database connection once the request has been dealt with
+* `Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener`:
+  closes the database connection once the request has been dealt with
 
 Finally it provides the following commands:
 
@@ -31,7 +33,7 @@ parameters:
 
 Then install `gnugat/pomm-foundation-bundle` using [Composer](https://getcomposer.org/download/):
 
-    composer require gnugat/pomm-foundation-bundle:^0.2
+    composer require gnugat/pomm-foundation-bundle:^0.3
 
 Finally register `Gnugat\PommFoundationBundle\GnugatPommFoundationBundle` in `AppKernel.php`.
 
