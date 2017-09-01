@@ -11,10 +11,9 @@
 
 namespace Gnugat\PommFoundationBundle\Command;
 
+use Gnugat\PommFoundationBundle\Service\CreateDatabase;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateDatabaseCommand extends ContainerAwareCommand
@@ -39,7 +38,7 @@ class CreateDatabaseCommand extends ContainerAwareCommand
         $output->writeln('// Creating the database');
         $output->writeln('');
 
-        $this->getContainer()->get('gnugat_pomm_foundation.create_database')->create();
+        $this->getContainer()->get(CreateDatabase::class)->create();
 
         $output->writeln(' [OK] Database created');
         $output->writeln('');

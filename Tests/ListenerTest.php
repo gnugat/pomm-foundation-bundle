@@ -12,9 +12,9 @@
 namespace Gnugat\PommFoundationBundle\Tests;
 
 use Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ListenerTest extends PHPUnit_Framework_TestCase
+class ListenerTest extends TestCase
 {
     private $container;
 

@@ -29,37 +29,23 @@ class ConnectionQueryManager implements QueryManagerInterface
     const NEED_NEW_CONNECTION = 0;
     const CONNECTION_OPENED = 1;
 
-    /**
-     * @var Pomm
-     */
     private $pomm;
-
-    /**
-     * @var QueryManagerInterface
-     */
     private $queryManager;
+    private $state = self::NEED_NEW_CONNECTION;
 
-    /**
-     * @var int
-     */
-    private $state;
-
-    /**
-     * @param string $host
-     * @param string $port
-     * @param string $database
-     * @param string $username
-     * @param string $password
-     */
-    public function __construct($host, $port, $database, $username, $password)
-    {
+    public function __construct(
+        string $host,
+        string $port,
+        string $database,
+        string $username,
+        string $password
+    ) {
         $this->pomm = new Pomm(array(
             $database => array(
                 'dsn' => "pgsql://$username:$password@$host:$port/$database",
                 'class:session_builder' => '\PommProject\Foundation\SessionBuilder',
             ),
         ));
-        $this->state = self::NEED_NEW_CONNECTION;
     }
 
     /**
@@ -78,7 +64,7 @@ class ConnectionQueryManager implements QueryManagerInterface
     /**
      * Closes the database connection, should be called after handling a request.
      */
-    public function shutdown()
+    public function shutdown(): void
     {
         $this->pomm->shutdown();
         unset($this->queryManager);

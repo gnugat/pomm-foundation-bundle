@@ -16,23 +16,14 @@ use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 class ClosingConnectionListener
 {
-    /**
-     * @var ConnectionQueryManager
-     */
     private $connectionQueryManager;
 
-    /**
-     * @param ConnectionQueryManager $connectionQueryManager
-     */
     public function __construct(ConnectionQueryManager $connectionQueryManager)
     {
         $this->connectionQueryManager = $connectionQueryManager;
     }
 
-    /**
-     * @param PostResponseEvent $event
-     */
-    public function onKernelTerminate(PostResponseEvent $event)
+    public function onKernelTerminate(PostResponseEvent $event): void
     {
         $this->connectionQueryManager->shutdown();
     }
