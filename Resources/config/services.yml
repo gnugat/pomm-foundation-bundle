@@ -1,34 +1,35 @@
 services:
-    gnugat_pomm_foundation.query_manager:
-        class: Gnugat\PommFoundationBundle\Service\ConnectionQueryManager
+    'PommProject\Foundation\QueryManager\QueryManagerInterface':
+        class: 'Gnugat\PommFoundationBundle\Service\ConnectionQueryManager'
         arguments:
-            - "%database_host%"
-            - "%database_port%"
-            - "%database_name%"
-            - "%database_user%"
-            - "%database_password%"
+            - '%database_host%'
+            - '%database_port%'
+            - '%database_name%'
+            - '%database_user%'
+            - '%database_password%'
 
-    gnugat_pomm_foundation.close_connection_listener:
-        class: Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener
+    'Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener':
         arguments:
-            - "@gnugat_pomm_foundation.query_manager"
+            - '@PommProject\Foundation\QueryManager\QueryManagerInterface'
         tags:
             - { name: kernel.event_listener, event: kernel.terminate, method: onKernelTerminate }
 
-    gnugat_pomm_foundation.create_database:
-        class: Gnugat\PommFoundationBundle\Service\CreateDatabase
+    'Gnugat\PommFoundationBundle\Service\CreateDatabase':
         arguments:
-            - "%database_host%"
-            - "%database_port%"
-            - "%database_name%"
-            - "%database_user%"
-            - "%database_password%"
+            - '%database_host%'
+            - '%database_port%'
+            - '%database_name%'
+            - '%database_user%'
+            - '%database_password%'
 
-    gnugat_pomm_foundation.drop_database:
-        class: Gnugat\PommFoundationBundle\Service\DropDatabase
+    'Gnugat\PommFoundationBundle\Service\DropDatabase':
         arguments:
-            - "%database_host%"
-            - "%database_port%"
-            - "%database_name%"
-            - "%database_user%"
-            - "%database_password%"
+            - '%database_host%'
+            - '%database_port%'
+            - '%database_name%'
+            - '%database_user%'
+            - '%database_password%'
+
+    # For legacy purpose
+    gnugat_pomm_foundation.query_manager:
+        alias: 'PommProject\Foundation\QueryManager\QueryManagerInterface'

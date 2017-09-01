@@ -11,9 +11,10 @@
 
 namespace Gnugat\PommFoundationBundle\Tests;
 
-use PHPUnit_Framework_TestCase;
+use PommProject\Foundation\QueryManager\QueryManagerInterface;
+use PHPUnit\Framework\TestCase;
 
-class ServiceTest extends PHPUnit_Framework_TestCase
+class ServiceTest extends TestCase
 {
     private $container;
 
@@ -27,11 +28,22 @@ class ServiceTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_provides_a_legacy_query_manager()
+    {
+        self::assertInstanceOf(
+            QueryManagerInterface::class,
+            $this->container->get('gnugat_pomm_foundation.query_manager')
+        );
+    }
+
+    /**
+     * @test
+     */
     public function it_provides_a_query_manager()
     {
         self::assertInstanceOf(
-            'PommProject\\Foundation\\QueryManager\\QueryManagerInterface',
-            $this->container->get('gnugat_pomm_foundation.query_manager')
+            QueryManagerInterface::class,
+            $this->container->get(QueryManagerInterface::class)
         );
     }
 }

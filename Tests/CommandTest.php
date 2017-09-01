@@ -13,9 +13,9 @@ namespace Gnugat\PommFoundationBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\ApplicationTester;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class CommandTest extends PHPUnit_Framework_TestCase
+class CommandTest extends TestCase
 {
     private $container;
 
@@ -33,9 +33,9 @@ class CommandTest extends PHPUnit_Framework_TestCase
      */
     public function it_has_create_database_command()
     {
-        $exitCode = $this->applicationTester->run(array(
+        $exitCode = $this->applicationTester->run([
             'gnugat-pomm-foundation:database:create',
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, $this->applicationTester->getDisplay());
     }
@@ -45,9 +45,9 @@ class CommandTest extends PHPUnit_Framework_TestCase
      */
     public function it_has_drop_database_command()
     {
-        $exitCode = $this->applicationTester->run(array(
+        $exitCode = $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, $this->applicationTester->getDisplay());
     }
