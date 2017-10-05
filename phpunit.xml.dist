@@ -5,12 +5,12 @@
     backupGlobals="false"
     colors="true"
     syntaxCheck="false"
-    bootstrap="Tests/app/autoload.php"
+    bootstrap="vendor/autoload.php"
     >
 
     <testsuites>
         <testsuite name="PommFoundationBundle Test Suite">
-            <directory>./Tests</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -3,7 +3,7 @@
 echo ''
 echo '// Building test environment'
 
-rm -rf Tests/app/cache/* Tests/app/logs/*
+rm -rf tests/App/cache/* tests/App/logs/*
 composer --quiet --no-interaction update --optimize-autoloader > /dev/null
 
 echo ''
