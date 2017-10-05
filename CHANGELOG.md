@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.1: Symfony 4 tree
+
+* Used Symfony 4 directory tree structure
+
 ## v0.3.0: PHP 7.1
 
 * Bumped requirement to PHP 7.1

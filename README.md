@@ -22,7 +22,7 @@ Finally it provides the following commands:
 First provide the database configuration:
 
 ```
-# app/config/parameters.yml.dist
+# app/config/parameters.yaml.dist
 parameters:
     database_host: 127.0.0.1
     database_port: 5432
