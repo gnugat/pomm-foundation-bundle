@@ -6,14 +6,19 @@
     "authors": [
         {
             "name": "Loïc Faugeron",
-            "email": "faugeron.loic+pomm-foundation-bundle@gmail.com",
+            "email": "faugeron.loic@gmail.com",
             "homepage": "http://gnugat.github.io",
             "role": "Developer"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Gnugat\\PommFoundationBundle\\": ""
+            "Gnugat\\PommFoundationBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\Gnugat\\PommFoundationBundle\\": "tests"
         }
     },
     "require": {
@@ -31,7 +36,6 @@
         "symfony/framework-bundle": "^2.3|^3.0",
         "symfony/finder": "^2.3|^3.0"
     },
-    "minimum-stability": "beta",
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
@@ -42,7 +46,7 @@
     },
     "extra": {
         "incenteev-parameters": [
-            { "file": "Tests/app/parameters.yml" }
+            { "file": "tests/App/parameters.yaml" }
         ]
     }
 }

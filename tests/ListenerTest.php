@@ -3,15 +3,16 @@
 /*
  * This file is part of the gnugat/pomm-foundation-bundle package.
  *
- * (c) Loïc Faugeron <faugeron.loic+pomm-foundation-bundle@gmail.com>
+ * (c) Loïc Faugeron <faugeron.loic@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Gnugat\PommFoundationBundle\Tests;
+namespace tests\Gnugat\PommFoundationBundle;
 
 use Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener;
+use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 use PHPUnit\Framework\TestCase;
 
 class ListenerTest extends TestCase
@@ -20,7 +21,7 @@ class ListenerTest extends TestCase
 
     protected function setUp()
     {
-        $kernel = new \AppKernel('test', false);
+        $kernel = new AppKernel('test', false);
         $kernel->boot();
         $this->container = $kernel->getContainer();
     }
