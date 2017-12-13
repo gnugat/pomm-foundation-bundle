@@ -12,7 +12,9 @@
 namespace Gnugat\PommFoundationBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -24,7 +26,11 @@ class GnugatPommFoundationExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $fileLocator = new FileLocator(__DIR__.'/../../config');
-        $loader = new YamlFileLoader($container, $fileLocator);
-        $loader->load('services.yaml');
+        $loader = new DirectoryLoader($container, $fileLocator);
+        $loader->setResolver(new LoaderResolver([
+            new YamlFileLoader($container, $fileLocator),
+            $loader,
+        ]));
+        $loader->load('services/');
     }
 }
