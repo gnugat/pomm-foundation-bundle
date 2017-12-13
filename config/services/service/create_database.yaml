@@ -1,0 +1,8 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\CreateDatabase':
+        arguments:
+            - '%database_host%'
+            - '%database_port%'
+            - '%database_name%'
+            - '%database_user%'
+            - '%database_password%'

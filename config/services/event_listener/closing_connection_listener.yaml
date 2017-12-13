@@ -1,0 +1,6 @@
+services:
+    'Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener':
+        arguments:
+            - '@PommProject\Foundation\QueryManager\QueryManagerInterface'
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate, method: onKernelTerminate }

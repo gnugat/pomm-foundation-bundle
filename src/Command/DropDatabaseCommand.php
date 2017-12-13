@@ -12,12 +12,21 @@
 namespace Gnugat\PommFoundationBundle\Command;
 
 use Gnugat\PommFoundationBundle\Service\DropDatabase;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DropDatabaseCommand extends ContainerAwareCommand
+class DropDatabaseCommand extends Command
 {
+    private $dropDatabase;
+
+    public function __construct(DropDatabase $dropDatabase)
+    {
+        $this->dropDatabase = $dropDatabase;
+
+        parent::__construct();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -38,7 +47,7 @@ class DropDatabaseCommand extends ContainerAwareCommand
         $output->writeln('// Dropping the database');
         $output->writeln('');
 
-        $this->getContainer()->get(DropDatabase::class)->drop();
+        $this->dropDatabase->drop();
 
         $output->writeln(' [OK] Database dropped');
         $output->writeln('');

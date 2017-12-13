@@ -29,17 +29,6 @@ class ServiceTest extends TestCase
     /**
      * @test
      */
-    public function it_provides_a_legacy_query_manager()
-    {
-        self::assertInstanceOf(
-            QueryManagerInterface::class,
-            $this->container->get('gnugat_pomm_foundation.query_manager')
-        );
-    }
-
-    /**
-     * @test
-     */
     public function it_provides_a_query_manager()
     {
         self::assertInstanceOf(
