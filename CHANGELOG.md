@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v0.5.0: Using createdb and dropdb
+
+Previously `psql` was internally used to create and drop the database,
+now switched to `createdb` and `dropdb`.
+
+New commands have been introduced (and some of them use `psql`):
+
+* `gnugat-pomm-foundation:database:check-existence` (`g:p:ch`)
+* `gnugat-pomm-foundation:database:close-connections` (`g:p:cl`)
+* `gnugat-pomm-foundation:database:dump` (`g:p:du`)
+* `gnugat-pomm-foundation:database:execute-file` (`g:p:ex`)
+* `gnugat-pomm-foundation:database:launch-console` (`g:p:la`)
+* `gnugat-pomm-foundation:database:query` (`g:p:qu`)
+
+Finally, `ConnectionQueryManager` has been changed:
+
+* converts `TRUE` and `FALSE` parameters to `'t'` and `'f'`
+* converts `\DateTime` parameters to string following this format: `'Y-m-d H:i:s T'`
+
 ## v0.4.0: Symfony 4
 
 * added Symfony 4 support

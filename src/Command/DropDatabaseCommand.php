@@ -11,18 +11,19 @@
 
 namespace Gnugat\PommFoundationBundle\Command;
 
-use Gnugat\PommFoundationBundle\Service\DropDatabase;
+use Gnugat\PommFoundationBundle\Service\Handler\DropDatabaseHandler;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class DropDatabaseCommand extends Command
 {
-    private $dropDatabase;
+    private $dropDatabaseHandler;
 
-    public function __construct(DropDatabase $dropDatabase)
-    {
-        $this->dropDatabase = $dropDatabase;
+    public function __construct(
+        DropDatabaseHandler $dropDatabaseHandler
+    ) {
+        $this->dropDatabaseHandler = $dropDatabaseHandler;
 
         parent::__construct();
     }
@@ -30,7 +31,7 @@ class DropDatabaseCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('gnugat-pomm-foundation:database:drop')
@@ -41,15 +42,19 @@ class DropDatabaseCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $output->writeln('');
         $output->writeln('// Dropping the database');
         $output->writeln('');
 
-        $this->dropDatabase->drop();
+        $this->dropDatabaseHandler->handle();
 
         $output->writeln(' [OK] Database dropped');
         $output->writeln('');
+
+        return ExitCode::SUCCESS;
     }
 }

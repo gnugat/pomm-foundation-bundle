@@ -1,0 +1,4 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\Handler\Internal\DropDatabase':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\ExecuteQuery'

@@ -1,0 +1,6 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\Handler\DropDatabaseHandler':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\CheckDatabaseExistence'
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\CloseDatabaseConnections'
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\DropDatabase'

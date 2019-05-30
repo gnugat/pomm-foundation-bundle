@@ -21,9 +21,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class GnugatPommFoundationExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $fileLocator = new FileLocator(__DIR__.'/../../config');
         $loader = new DirectoryLoader($container, $fileLocator);

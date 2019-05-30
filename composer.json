@@ -30,8 +30,9 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
         "incenteev/composer-parameter-handler": "^2.1",
-        "phpunit/phpunit": "^6.0",
+        "phpunit/phpunit": "^7.0",
         "symfony/console": "^4.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/finder": "^4.0"
@@ -46,7 +47,7 @@
     },
     "extra": {
         "incenteev-parameters": [
-            { "file": "tests/App/parameters.yaml" }
+            { "file": "tests/App/config/parameters.yaml" }
         ]
     }
 }

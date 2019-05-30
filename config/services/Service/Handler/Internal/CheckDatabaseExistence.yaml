@@ -1,0 +1,4 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\Handler\Internal\CheckDatabaseExistence':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\ExecuteQuery'

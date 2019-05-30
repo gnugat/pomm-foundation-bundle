@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace tests\Gnugat\PommFoundationBundle;
+namespace tests\Gnugat\PommFoundationBundle\EventListener;
 
 use Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener;
 use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 use PHPUnit\Framework\TestCase;
 
-class ListenerTest extends TestCase
+class ClosingConnectionListenerTest extends TestCase
 {
     private $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = new AppKernel('test', false);
         $kernel->boot();
@@ -29,7 +29,7 @@ class ListenerTest extends TestCase
     /**
      * @test
      */
-    public function it_has_a_close_connection_listener()
+    public function it_has_a_close_connection_listener(): void
     {
         $listeners = $this->container->get('event_dispatcher')->getListeners('kernel.terminate');
         $isCloseConnectionIn = function ($listeners) {

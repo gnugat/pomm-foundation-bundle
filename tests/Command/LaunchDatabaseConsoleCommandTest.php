@@ -9,18 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace tests\Gnugat\PommFoundationBundle;
+namespace tests\Gnugat\PommFoundationBundle\Command;
 
+use Gnugat\PommFoundationBundle\Command\ExitCode;
+use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\ApplicationTester;
 use tests\Gnugat\PommFoundationBundle\App\AppKernel;
-use PHPUnit\Framework\TestCase;
 
-class CommandTest extends TestCase
+class LaunchDatabaseConsoleCommandTest extends TestCase
 {
+    private const NON_EXISTING_DATABASE = <<<OUTPUT
+
+ [ERROR] The database does not exist
+
+
+OUTPUT;
+
     private $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = new AppKernel('test', false);
         $kernel->boot();
@@ -32,24 +40,18 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_create_database_command()
+    public function it_cannot_launch_console_for_non_existing_database(): void
     {
-        $exitCode = $this->applicationTester->run([
-            'gnugat-pomm-foundation:database:create',
-        ]);
-
-        $this->assertSame(0, $exitCode, $this->applicationTester->getDisplay());
-    }
-
-    /**
-     * @test
-     */
-    public function it_has_drop_database_command()
-    {
-        $exitCode = $this->applicationTester->run([
+        $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
         ]);
 
-        $this->assertSame(0, $exitCode, $this->applicationTester->getDisplay());
+        $exitCode = $this->applicationTester->run([
+            'gnugat-pomm-foundation:database:launch',
+        ]);
+        $output = $this->applicationTester->getDisplay();
+
+        self::assertSame(self::NON_EXISTING_DATABASE, $output);
+        self::assertSame(ExitCode::ERROR, $exitCode);
     }
 }

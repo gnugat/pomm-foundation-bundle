@@ -11,19 +11,19 @@
 
 namespace Gnugat\PommFoundationBundle\Command;
 
-use Gnugat\PommFoundationBundle\Service\Handler\CreateDatabaseHandler;
+use Gnugat\PommFoundationBundle\Service\Handler\LaunchDatabaseConsoleHandler;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateDatabaseCommand extends Command
+class LaunchDatabaseConsoleCommand extends Command
 {
-    private $createDatabaseHandler;
+    private $launchDatabaseConsoleHandler;
 
     public function __construct(
-        CreateDatabaseHandler $createDatabaseHandler
+        LaunchDatabaseConsoleHandler $launchDatabaseConsoleHandler
     ) {
-        $this->createDatabaseHandler = $createDatabaseHandler;
+        $this->launchDatabaseConsoleHandler = $launchDatabaseConsoleHandler;
 
         parent::__construct();
     }
@@ -34,8 +34,8 @@ class CreateDatabaseCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('gnugat-pomm-foundation:database:create')
-            ->setDescription('Creates the database')
+            ->setName('gnugat-pomm-foundation:database:launch-console')
+            ->setDescription('Launches the database console')
         ;
     }
 
@@ -46,15 +46,16 @@ class CreateDatabaseCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $output->writeln('');
-        $output->writeln('// Creating the database');
-        $output->writeln('');
+        try {
+            $this->launchDatabaseConsoleHandler->handle();
 
-        $this->createDatabaseHandler->handle();
+            return ExitCode::SUCCESS;
+        } catch (\DomainException $e) {
+            $output->writeln('');
+            $output->writeln(' [ERROR] '.$e->getMessage());
+            $output->writeln('');
 
-        $output->writeln(' [OK] Database created');
-        $output->writeln('');
-
-        return ExitCode::SUCCESS;
+            return ExitCode::ERROR;
+        }
     }
 }

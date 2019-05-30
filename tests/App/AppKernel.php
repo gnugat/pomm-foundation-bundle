@@ -16,16 +16,31 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    public function registerBundles()
+    public function registerBundles(): array
     {
-        return array(
+        return [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Gnugat\PommFoundationBundle\GnugatPommFoundationBundle(),
-        );
+        ];
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load(__DIR__.'/config.yaml');
+        $loader->load(__DIR__.'/config/config.yaml');
+    }
+
+    public function getProjectDir(): string
+    {
+        return __DIR__;
+    }
+
+    public function getLogDir(): string
+    {
+        return __DIR__.'/var/log';
+    }
+
+    public function getCacheDir(): string
+    {
+        return __DIR__.'/var/cache';
     }
 }
