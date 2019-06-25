@@ -11,19 +11,19 @@
 
 namespace Gnugat\PommFoundationBundle\Command;
 
-use Gnugat\PommFoundationBundle\Service\Handler\CreateDatabaseHandler;
+use Gnugat\PommFoundationBundle\Service\Handler\CloseDatabaseConnectionsHandler;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateDatabaseCommand extends Command
+class CloseDatabaseConnectionsCommand extends Command
 {
-    private $createDatabaseHandler;
+    private $closeDatabaseConnectionsHandler;
 
     public function __construct(
-        CreateDatabaseHandler $createDatabaseHandler
+        CloseDatabaseConnectionsHandler $closeDatabaseConnectionsHandler
     ) {
-        $this->createDatabaseHandler = $createDatabaseHandler;
+        $this->closeDatabaseConnectionsHandler = $closeDatabaseConnectionsHandler;
 
         parent::__construct();
     }
@@ -34,8 +34,8 @@ class CreateDatabaseCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('gnugat-pomm-foundation:database:create')
-            ->setDescription('Creates the database')
+            ->setName('gnugat-pomm-foundation:database:close-connections')
+            ->setDescription('Closes the database connections')
         ;
     }
 
@@ -47,12 +47,12 @@ class CreateDatabaseCommand extends Command
         OutputInterface $output
     ): int {
         $output->writeln('');
-        $output->writeln('// Creating the database');
+        $output->writeln('// Closing the database connections');
         $output->writeln('');
 
-        $this->createDatabaseHandler->handle();
+        $this->closeDatabaseConnectionsHandler->handle();
 
-        $output->writeln(' [OK] Database created');
+        $output->writeln(' [OK] Database connections closed');
         $output->writeln('');
 
         return ExitCode::SUCCESS;

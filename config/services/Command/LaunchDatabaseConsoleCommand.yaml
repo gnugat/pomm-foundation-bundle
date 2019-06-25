@@ -1,0 +1,6 @@
+services:
+    'Gnugat\PommFoundationBundle\Command\LaunchDatabaseConsoleCommand':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\LaunchDatabaseConsoleHandler'
+        tags:
+            - { name: console.command, command: 'gnugat-pomm-foundation:database:launch-console' }

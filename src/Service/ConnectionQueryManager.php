@@ -15,19 +15,25 @@ use PommProject\Foundation\Pomm;
 use PommProject\Foundation\QueryManager\QueryManagerInterface;
 
 /**
- * A QueryManager tied to a Connection:
+ * A QueryManager tied to a Connection:.
  *
  * 1. the first time it is called, opens a new connection
  * 2. the next times it is called, uses the existing connection
  * 3. if shutdown is called, closes the connection and goes back to step 1
  *
- * This allows to keep a 1 to 1 relation between a HTTP request and a database Connection,
- * which is important when the application is a long running process (e.g. tests, FastCGI, AMQP consumer, etc).
+ * This allows to keep a 1 to 1 relation between a HTTP request and a database
+ * Connection, which is important when the application is a long running process
+ * (e.g. tests, FastCGI, AMQP consumer, etc).
+ *
+ * Also makes sure boolean parameters are converted to 't' and 'f',
+ * as Pomm Foundation doesn't support it out of the box.
  */
 class ConnectionQueryManager implements QueryManagerInterface
 {
-    const NEED_NEW_CONNECTION = 0;
-    const CONNECTION_OPENED = 1;
+    private const NEED_NEW_CONNECTION = 0;
+    private const CONNECTION_OPENED = 1;
+
+    public const TIMESTAMP_FORMAT = 'Y-m-d H:i:s T';
 
     private $pomm;
     private $queryManager;
@@ -40,12 +46,12 @@ class ConnectionQueryManager implements QueryManagerInterface
         string $username,
         string $password
     ) {
-        $this->pomm = new Pomm(array(
-            $database => array(
+        $this->pomm = new Pomm([
+            $database => [
                 'dsn' => "pgsql://$username:$password@$host:$port/$database",
                 'class:session_builder' => '\PommProject\Foundation\SessionBuilder',
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -53,6 +59,20 @@ class ConnectionQueryManager implements QueryManagerInterface
      */
     public function query($sql, array $parameters = [])
     {
+        foreach ($parameters as $index => $parameter) {
+            if (true === is_bool($parameter)) {
+                $parameters[$index] = $parameter ? 't' : 'f';
+
+                continue;
+            }
+            if ($parameter instanceof \DateTime) {
+                $parameters[$index] = $parameter->format(
+                    self::TIMESTAMP_FORMAT
+                );
+
+                continue;
+            }
+        }
         if (self::NEED_NEW_CONNECTION === $this->state) {
             $this->queryManager = $this->pomm->getDefaultsession()->getQueryManager();
             $this->state = self::CONNECTION_OPENED;

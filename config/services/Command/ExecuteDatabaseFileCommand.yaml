@@ -1,0 +1,6 @@
+services:
+    'Gnugat\PommFoundationBundle\Command\ExecuteDatabaseFileCommand':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\ExecuteDatabaseFileHandler'
+        tags:
+            - { name: console.command, command: 'gnugat-pomm-foundation:database:execute-file' }

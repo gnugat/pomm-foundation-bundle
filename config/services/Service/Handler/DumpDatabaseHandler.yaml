@@ -1,0 +1,5 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\Handler\DumpDatabaseHandler':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\CheckDatabaseExistence'
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\DumpDatabase'

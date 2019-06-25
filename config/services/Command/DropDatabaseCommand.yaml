@@ -1,6 +1,6 @@
 services:
     'Gnugat\PommFoundationBundle\Command\DropDatabaseCommand':
         arguments:
-            - '@Gnugat\PommFoundationBundle\Service\DropDatabase'
+            - '@Gnugat\PommFoundationBundle\Service\Handler\DropDatabaseHandler'
         tags:
             - { name: console.command, command: 'gnugat-pomm-foundation:database:drop' }

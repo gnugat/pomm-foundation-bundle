@@ -1,6 +1,6 @@
 services:
     'Gnugat\PommFoundationBundle\Command\CreateDatabaseCommand':
         arguments:
-            - '@Gnugat\PommFoundationBundle\Service\CreateDatabase'
+            - '@Gnugat\PommFoundationBundle\Service\Handler\CreateDatabaseHandler'
         tags:
             - { name: console.command, command: 'gnugat-pomm-foundation:database:create' }

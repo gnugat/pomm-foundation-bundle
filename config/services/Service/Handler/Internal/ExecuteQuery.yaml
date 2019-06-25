@@ -1,5 +1,5 @@
 services:
-    'Gnugat\PommFoundationBundle\Service\CreateDatabase':
+    'Gnugat\PommFoundationBundle\Service\Handler\Internal\ExecuteQuery':
         arguments:
             - '%database_host%'
             - '%database_port%'

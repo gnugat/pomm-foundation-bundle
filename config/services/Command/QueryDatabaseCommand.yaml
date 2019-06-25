@@ -1,0 +1,6 @@
+services:
+    'Gnugat\PommFoundationBundle\Command\QueryDatabaseCommand':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\QueryDatabaseHandler'
+        tags:
+            - { name: console.command, command: 'gnugat-pomm-foundation:database:query' }

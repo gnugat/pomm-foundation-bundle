@@ -1,0 +1,4 @@
+services:
+    'Gnugat\PommFoundationBundle\Service\Handler\Internal\CreateDatabase':
+        arguments:
+            - '@Gnugat\PommFoundationBundle\Service\Handler\Internal\ExecuteQuery'
