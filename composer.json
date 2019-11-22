@@ -32,7 +32,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
         "incenteev/composer-parameter-handler": "^2.1",
-        "phpunit/phpunit": "^7.0",
+        "phpunit/phpunit": "^8.4",
         "symfony/console": "^4.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/finder": "^4.0"
