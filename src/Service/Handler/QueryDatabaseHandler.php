@@ -36,10 +36,7 @@ class QueryDatabaseHandler
         try {
             return $this->queryDatabase->query($sql);
         } catch (\RuntimeException $e) {
-            throw new \DomainException(
-                $e->getMessage(),
-                $e->getCode()
-            );
+            throw new \DomainException($e->getMessage(), $e->getCode());
         }
     }
 }

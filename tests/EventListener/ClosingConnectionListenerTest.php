@@ -12,8 +12,8 @@
 namespace tests\Gnugat\PommFoundationBundle\EventListener;
 
 use Gnugat\PommFoundationBundle\EventListener\ClosingConnectionListener;
-use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 use PHPUnit\Framework\TestCase;
+use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class ClosingConnectionListenerTest extends TestCase
 {
