@@ -55,7 +55,7 @@ parameters:
 Then install `gnugat/pomm-foundation-bundle` using [Composer](https://getcomposer.org/download/):
 
 ```
-composer require gnugat/pomm-foundation-bundle:^0.5
+composer require gnugat/pomm-foundation-bundle:^0.6
 ```
 
 Finally add the following in your `config/bundles.php`:
