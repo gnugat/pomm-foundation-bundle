@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.6.0: PHP 7.3
+
+* bumped requirement to PHP 7.3
+
 ## v0.5.0: Using createdb and dropdb
 
 Previously `psql` was internally used to create and drop the database,

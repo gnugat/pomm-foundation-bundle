@@ -36,10 +36,7 @@ class ExecuteDatabaseFileHandler
         try {
             return $this->executeDatabaseFile->execute($filename);
         } catch (\RuntimeException $e) {
-            throw new \DomainException(
-                $e->getMessage(),
-                $e->getCode()
-            );
+            throw new \DomainException($e->getMessage(), $e->getCode());
         }
     }
 }
