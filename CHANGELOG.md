@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.7.0: PHP 8.0 & Symfony 6
+
+* bumped requirement to PHP 8.0
+* bumped requirements to Symfony 6
+
 ## v0.6.1: Fixed Symfony 5 TerminateEvent
 
 * Properly changed from `PostResponseEvent` to `TerminateEvent`
