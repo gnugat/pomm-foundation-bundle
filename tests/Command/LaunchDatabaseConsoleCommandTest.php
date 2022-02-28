@@ -26,7 +26,7 @@ class LaunchDatabaseConsoleCommandTest extends TestCase
 
 OUTPUT;
 
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -40,7 +40,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_launch_console_for_non_existing_database(): void
+    public function itCannotLaunchConsoleForNonExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

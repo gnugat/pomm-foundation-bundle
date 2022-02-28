@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\CloseDatabaseConnection
 
 class CloseDatabaseConnectionsHandler
 {
-    private $checkDatabaseExistence;
-    private $closeDatabaseConnections;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        CloseDatabaseConnections $closeDatabaseConnections
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private CloseDatabaseConnections $closeDatabaseConnections
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->closeDatabaseConnections = $closeDatabaseConnections;
     }
 
     public function handle(): void

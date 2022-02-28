@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CloseDatabaseConnectionsCommand extends Command
 {
-    private $closeDatabaseConnectionsHandler;
-
     public function __construct(
-        CloseDatabaseConnectionsHandler $closeDatabaseConnectionsHandler
+        private CloseDatabaseConnectionsHandler $closeDatabaseConnectionsHandler
     ) {
-        $this->closeDatabaseConnectionsHandler = $closeDatabaseConnectionsHandler;
-
         parent::__construct();
     }
 

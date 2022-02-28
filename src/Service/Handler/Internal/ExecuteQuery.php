@@ -15,24 +15,13 @@ class ExecuteQuery
 {
     private const EXIT_SUCCESS = 0;
 
-    private $host;
-    private $port;
-    private $database;
-    private $username;
-    private $password;
-
     public function __construct(
-        string $host,
-        string $port,
-        string $database,
-        string $username,
-        string $password = ''
+        private string $host,
+        private string $port,
+        private string $database,
+        private string $username,
+        private string $password = ''
     ) {
-        $this->host = $host;
-        $this->port = $port;
-        $this->database = $database;
-        $this->username = $username;
-        $this->password = $password;
     }
 
     public function execute(string $query): string

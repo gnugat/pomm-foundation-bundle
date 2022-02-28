@@ -19,13 +19,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class QueryDatabaseCommand extends Command
 {
-    private $queryDatabaseHandler;
-
     public function __construct(
-        QueryDatabaseHandler $queryDatabaseHandler
+        private QueryDatabaseHandler $queryDatabaseHandler
     ) {
-        $this->queryDatabaseHandler = $queryDatabaseHandler;
-
         parent::__construct();
     }
 

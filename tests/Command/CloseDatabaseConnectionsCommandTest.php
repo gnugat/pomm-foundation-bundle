@@ -19,7 +19,7 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class CloseDatabaseConnectionsCommandTest extends TestCase
 {
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -33,7 +33,7 @@ class CloseDatabaseConnectionsCommandTest extends TestCase
     /**
      * @test
      */
-    public function it_does_nothing_when_database_does_not_exist(): void
+    public function itDoesNothingWhenDatabaseDoesNotExist(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -50,7 +50,7 @@ class CloseDatabaseConnectionsCommandTest extends TestCase
     /**
      * @test
      */
-    public function it_closes_database_connections(): void
+    public function itClosesDatabaseConnections(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

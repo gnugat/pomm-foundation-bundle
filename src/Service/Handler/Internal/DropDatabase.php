@@ -15,11 +15,9 @@ class DropDatabase
 {
     private const DROP_DATABASE = "PGPASSWORD='%password%' dropdb -U %username% -p %port% -h %host% -w %database% 2>&1";
 
-    private $executeQuery;
-
-    public function __construct(ExecuteQuery $executeQuery)
-    {
-        $this->executeQuery = $executeQuery;
+    public function __construct(
+        private ExecuteQuery $executeQuery,
+    ) {
     }
 
     public function drop(): void

@@ -16,11 +16,9 @@ class CheckDatabaseExistence
     private const CHECK_EXISTENCE = "PGPASSWORD='%password%' psql -U %username% -p %port% -h %host% -w -lqt | cut -d \| -f 1 | grep -w %database% | wc -l";
     private const DOES_EXISTS = '1';
 
-    private $executeQuery;
-
-    public function __construct(ExecuteQuery $executeQuery)
-    {
-        $this->executeQuery = $executeQuery;
+    public function __construct(
+        private ExecuteQuery $executeQuery,
+    ) {
     }
 
     public function check(): bool

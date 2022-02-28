@@ -82,7 +82,7 @@ OUTPUT;
 
 OUTPUT;
 
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -96,7 +96,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_query_non_existing_database(): void
+    public function itCannotQueryNonExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -115,7 +115,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_executes_database_file(): void
+    public function itExecutesDatabaseFile(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -141,7 +141,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_can_restore_database_from_dump_file(): void
+    public function itCanRestoreDatabaseFromDumpFile(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -178,7 +178,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_execute_query_errors(): void
+    public function itCannotExecuteQueryErrors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -211,7 +211,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_execute_syntax_errors(): void
+    public function itCannotExecuteSyntaxErrors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -244,7 +244,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_execute_non_existing_files(): void
+    public function itCannotExecuteNonExistingFiles(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

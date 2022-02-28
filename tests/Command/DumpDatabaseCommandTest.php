@@ -26,7 +26,7 @@ class DumpDatabaseCommandTest extends TestCase
 
 OUTPUT;
 
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -40,7 +40,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_dump_non_existing_database(): void
+    public function itCannotDumpNonExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -58,7 +58,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_dumps_database(): void
+    public function itDumpsDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DropDatabaseCommand extends Command
 {
-    private $dropDatabaseHandler;
-
     public function __construct(
-        DropDatabaseHandler $dropDatabaseHandler
+        private DropDatabaseHandler $dropDatabaseHandler
     ) {
-        $this->dropDatabaseHandler = $dropDatabaseHandler;
-
         parent::__construct();
     }
 

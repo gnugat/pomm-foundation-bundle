@@ -40,7 +40,7 @@ The database does exist
 
 OUTPUT;
 
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -54,7 +54,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_checks_non_existing_database(): void
+    public function itChecksNonExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -72,7 +72,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_checks_existing_database(): void
+    public function itChecksExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\DumpDatabase;
 
 class DumpDatabaseHandler
 {
-    private $checkDatabaseExistence;
-    private $dumpDatabase;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        DumpDatabase $dumpDatabase
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private DumpDatabase $dumpDatabase
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->dumpDatabase = $dumpDatabase;
     }
 
     public function handle(): string
