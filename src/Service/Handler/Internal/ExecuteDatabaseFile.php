@@ -15,11 +15,9 @@ class ExecuteDatabaseFile
 {
     private const EXECUTE_FILE = "PGPASSWORD='%password%' psql -U %username% -p %port% -h %host% -w -d %database% -f \"%filename%\"";
 
-    private $executeQuery;
-
-    public function __construct(ExecuteQuery $executeQuery)
-    {
-        $this->executeQuery = $executeQuery;
+    public function __construct(
+        private ExecuteQuery $executeQuery,
+    ) {
     }
 
     public function execute(string $filename): string

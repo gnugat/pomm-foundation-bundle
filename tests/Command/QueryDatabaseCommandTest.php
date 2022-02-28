@@ -42,7 +42,7 @@ LINE 1: SELECT COUNT(*) FROM my_table;
 
 OUTPUT;
 
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -56,7 +56,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_query_non_existing_database(): void
+    public function itCannotQueryNonExistingDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -75,7 +75,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_queries_database(): void
+    public function itQueriesDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -105,7 +105,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function it_cannot_query_errors(): void
+    public function itCannotQueryErrors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CheckDatabaseExistenceCommand extends Command
 {
-    private $checkDatabaseExistenceHandler;
-
     public function __construct(
-        CheckDatabaseExistenceHandler $checkDatabaseExistenceHandler
+        private CheckDatabaseExistenceHandler $checkDatabaseExistenceHandler
     ) {
-        $this->checkDatabaseExistenceHandler = $checkDatabaseExistenceHandler;
-
         parent::__construct();
     }
 

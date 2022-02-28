@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\ExecuteDatabaseFile;
 
 class ExecuteDatabaseFileHandler
 {
-    private $checkDatabaseExistence;
-    private $executeDatabaseFile;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        ExecuteDatabaseFile $executeDatabaseFile
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private ExecuteDatabaseFile $executeDatabaseFile
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->executeDatabaseFile = $executeDatabaseFile;
     }
 
     public function handle(string $filename): string

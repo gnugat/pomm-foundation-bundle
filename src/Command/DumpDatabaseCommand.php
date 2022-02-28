@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DumpDatabaseCommand extends Command
 {
-    private $dumpDatabaseHandler;
-
     public function __construct(
-        DumpDatabaseHandler $dumpDatabaseHandler
+        private DumpDatabaseHandler $dumpDatabaseHandler
     ) {
-        $this->dumpDatabaseHandler = $dumpDatabaseHandler;
-
         parent::__construct();
     }
 

@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateDatabaseCommand extends Command
 {
-    private $createDatabaseHandler;
-
     public function __construct(
-        CreateDatabaseHandler $createDatabaseHandler
+        private CreateDatabaseHandler $createDatabaseHandler
     ) {
-        $this->createDatabaseHandler = $createDatabaseHandler;
-
         parent::__construct();
     }
 

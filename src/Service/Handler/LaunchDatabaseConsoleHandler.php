@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\LaunchDatabaseConsole;
 
 class LaunchDatabaseConsoleHandler
 {
-    private $checkDatabaseExistence;
-    private $launchDatabaseConsole;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        LaunchDatabaseConsole $launchDatabaseConsole
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private LaunchDatabaseConsole $launchDatabaseConsole
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->launchDatabaseConsole = $launchDatabaseConsole;
     }
 
     public function handle(): void

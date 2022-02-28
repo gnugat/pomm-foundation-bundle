@@ -18,13 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class LaunchDatabaseConsoleCommand extends Command
 {
-    private $launchDatabaseConsoleHandler;
-
     public function __construct(
-        LaunchDatabaseConsoleHandler $launchDatabaseConsoleHandler
+        private LaunchDatabaseConsoleHandler $launchDatabaseConsoleHandler
     ) {
-        $this->launchDatabaseConsoleHandler = $launchDatabaseConsoleHandler;
-
         parent::__construct();
     }
 

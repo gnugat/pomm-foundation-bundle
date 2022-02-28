@@ -16,11 +16,9 @@ use Symfony\Component\HttpKernel\Event\TerminateEvent;
 
 class ClosingConnectionListener
 {
-    private $connectionQueryManager;
-
-    public function __construct(ConnectionQueryManager $connectionQueryManager)
-    {
-        $this->connectionQueryManager = $connectionQueryManager;
+    public function __construct(
+        private ConnectionQueryManager $connectionQueryManager,
+    ) {
     }
 
     public function onKernelTerminate(TerminateEvent $event): void

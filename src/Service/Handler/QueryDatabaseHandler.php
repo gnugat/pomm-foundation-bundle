@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\QueryDatabase;
 
 class QueryDatabaseHandler
 {
-    private $checkDatabaseExistence;
-    private $queryDatabase;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        QueryDatabase $queryDatabase
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private QueryDatabase $queryDatabase
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->queryDatabase = $queryDatabase;
     }
 
     public function handle(string $sql): string

@@ -28,13 +28,9 @@ Also allows restoring a database using a dump file:
     bin/console gnugat-pomm-foundation:database:execute-file /tmp/dump.sql
 TEXT;
 
-    private $executeDatabaseFileHandler;
-
     public function __construct(
-        ExecuteDatabaseFileHandler $executeDatabaseFileHandler
+        private ExecuteDatabaseFileHandler $executeDatabaseFileHandler
     ) {
-        $this->executeDatabaseFileHandler = $executeDatabaseFileHandler;
-
         parent::__construct();
     }
 

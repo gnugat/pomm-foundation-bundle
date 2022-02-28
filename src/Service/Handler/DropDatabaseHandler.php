@@ -17,18 +17,11 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\DropDatabase;
 
 class DropDatabaseHandler
 {
-    private $checkDatabaseExistence;
-    private $closeDatabaseConnections;
-    private $dropDatabase;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        CloseDatabaseConnections $closeDatabaseConnections,
-        DropDatabase $dropDatabase
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private CloseDatabaseConnections $closeDatabaseConnections,
+        private DropDatabase $dropDatabase
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->closeDatabaseConnections = $closeDatabaseConnections;
-        $this->dropDatabase = $dropDatabase;
     }
 
     public function handle(): void

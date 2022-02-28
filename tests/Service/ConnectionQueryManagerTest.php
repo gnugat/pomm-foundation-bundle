@@ -65,8 +65,8 @@ SQL
         ['my_boolean' => self::MY_TRUE_BOOLEAN],
     ];
 
-    private $applicationTester;
-    private $queryManager;
+    private ApplicationTester $applicationTester;
+    private QueryManagerInterface $queryManager;
 
     protected function setUp(): void
     {
@@ -83,7 +83,7 @@ SQL
     /**
      * @test
      */
-    public function it_can_query(): void
+    public function itCanQuery(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -111,7 +111,7 @@ SQL
     /**
      * @test
      */
-    public function it_can_use_literal_boolean_parameters(): void
+    public function itCanUseLiteralBooleanParameters(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -142,7 +142,7 @@ SQL
     /**
      * @test
      */
-    public function it_can_use_boolean_parameters(): void
+    public function itCanUseBooleanParameters(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -173,7 +173,7 @@ SQL
     /**
      * @test
      */
-    public function it_cannot_use_booleanish_parameters(): void
+    public function itCannotUseBooleanishParameters(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -204,7 +204,7 @@ SQL
     /**
      * @test
      */
-    public function it_can_use_literal_timestamp_parameters(): void
+    public function itCanUseLiteralTimestampParameters(): void
     {
         date_default_timezone_set('UTC');
         $this->applicationTester->run([
@@ -234,7 +234,7 @@ SQL
     /**
      * @test
      */
-    public function it_can_use_date_time_timestamp_parameters(): void
+    public function itCanUseDateTimeTimestampParameters(): void
     {
         date_default_timezone_set('UTC');
         $this->applicationTester->run([

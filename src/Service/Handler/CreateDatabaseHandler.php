@@ -16,15 +16,10 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\CreateDatabase;
 
 class CreateDatabaseHandler
 {
-    private $checkDatabaseExistence;
-    private $createDatabase;
-
     public function __construct(
-        CheckDatabaseExistence $checkDatabaseExistence,
-        CreateDatabase $createDatabase
+        private CheckDatabaseExistence $checkDatabaseExistence,
+        private CreateDatabase $createDatabase
     ) {
-        $this->checkDatabaseExistence = $checkDatabaseExistence;
-        $this->createDatabase = $createDatabase;
     }
 
     public function handle(): void

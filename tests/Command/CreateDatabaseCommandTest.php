@@ -19,7 +19,7 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class CreateDatabaseCommandTest extends TestCase
 {
-    private $container;
+    private ApplicationTester $applicationTester;
 
     protected function setUp(): void
     {
@@ -33,7 +33,7 @@ class CreateDatabaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function it_does_nothing_when_database_already_exists(): void
+    public function itDoesNothingWhenDatabaseAlreadyExists(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -57,7 +57,7 @@ class CreateDatabaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_database(): void
+    public function itCreatesDatabase(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
