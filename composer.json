@@ -24,16 +24,16 @@
     "require": {
         "php": "^8.0",
         "pomm-project/foundation": "^2.0",
-        "symfony/http-kernel": "^5.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/config": "^5.0",
-        "symfony/yaml": "^5.0"
+        "symfony/http-kernel": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/config": "^6.0",
+        "symfony/yaml": "^6.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.6",
         "phpunit/phpunit": "^8.4",
-        "symfony/console": "^5.0",
-        "symfony/framework-bundle": "^5.0",
-        "symfony/finder": "^5.0"
+        "symfony/console": "^6.0",
+        "symfony/framework-bundle": "^6.0",
+        "symfony/finder": "^6.0"
     }
 }
