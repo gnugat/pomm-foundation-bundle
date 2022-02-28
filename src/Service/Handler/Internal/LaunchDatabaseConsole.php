@@ -16,7 +16,7 @@ class LaunchDatabaseConsole
     private const QUERY = "PGPASSWORD='%password%' psql -U %username% -p %port% -h %host% -w -d %database%";
 
     public function __construct(
-        private ExecuteQuery $executeQuery
+        private ExecuteQuery $executeQuery,
     ) {
     }
 

@@ -2,7 +2,7 @@
 /vendor
 /phpunit.xml
 /.phpunit.result.cache
-/.php_cs.cache
+/.php-cs-fixer.cache
 /tests/App/var
 /tests/App/config/parameters.yaml
 /tests/Command/fixtures/dump_file.sql

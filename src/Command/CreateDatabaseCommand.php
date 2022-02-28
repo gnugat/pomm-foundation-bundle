@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateDatabaseCommand extends Command
 {
     public function __construct(
-        private CreateDatabaseHandler $createDatabaseHandler
+        private CreateDatabaseHandler $createDatabaseHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class CreateDatabaseCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:create')
-            ->setDescription('Creates the database')
-        ;
+            ->setDescription('Creates the database');
     }
 
     /**
@@ -40,7 +39,7 @@ class CreateDatabaseCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         $output->writeln('');
         $output->writeln('// Creating the database');

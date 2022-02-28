@@ -18,7 +18,7 @@ class QueryDatabaseHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private QueryDatabase $queryDatabase
+        private QueryDatabase $queryDatabase,
     ) {
     }
 

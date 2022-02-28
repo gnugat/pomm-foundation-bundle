@@ -25,7 +25,7 @@ class ExecuteDatabaseFile
         $output = $this->executeQuery->execute(str_replace(
             '%filename%',
             addslashes($filename),
-            self::EXECUTE_FILE
+            self::EXECUTE_FILE,
         ));
         if (1 === preg_match('/psql:(.*): ERROR:(.*)/', $output)) {
             throw new \DomainException($output);

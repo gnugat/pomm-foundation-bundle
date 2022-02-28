@@ -18,7 +18,7 @@ class CloseDatabaseConnectionsHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private CloseDatabaseConnections $closeDatabaseConnections
+        private CloseDatabaseConnections $closeDatabaseConnections,
     ) {
     }
 

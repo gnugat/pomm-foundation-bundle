@@ -33,7 +33,7 @@ class CreateDatabaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNothingWhenDatabaseAlreadyExists(): void
+    public function it_does_nothing_when_database_already_exists(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -57,7 +57,7 @@ class CreateDatabaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function itCreatesDatabase(): void
+    public function it_creates_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

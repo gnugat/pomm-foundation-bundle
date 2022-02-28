@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CloseDatabaseConnectionsCommand extends Command
 {
     public function __construct(
-        private CloseDatabaseConnectionsHandler $closeDatabaseConnectionsHandler
+        private CloseDatabaseConnectionsHandler $closeDatabaseConnectionsHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class CloseDatabaseConnectionsCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:close-connections')
-            ->setDescription('Closes the database connections')
-        ;
+            ->setDescription('Closes the database connections');
     }
 
     /**
@@ -40,7 +39,7 @@ class CloseDatabaseConnectionsCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         $output->writeln('');
         $output->writeln('// Closing the database connections');

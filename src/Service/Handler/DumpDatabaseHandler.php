@@ -18,7 +18,7 @@ class DumpDatabaseHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private DumpDatabase $dumpDatabase
+        private DumpDatabase $dumpDatabase,
     ) {
     }
 

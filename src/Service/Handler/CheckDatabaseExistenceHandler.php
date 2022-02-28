@@ -16,7 +16,7 @@ use Gnugat\PommFoundationBundle\Service\Handler\Internal\CheckDatabaseExistence;
 class CheckDatabaseExistenceHandler
 {
     public function __construct(
-        private CheckDatabaseExistence $checkDatabaseExistence
+        private CheckDatabaseExistence $checkDatabaseExistence,
     ) {
     }
 

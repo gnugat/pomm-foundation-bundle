@@ -30,10 +30,9 @@ use PommProject\Foundation\QueryManager\QueryManagerInterface;
  */
 class ConnectionQueryManager implements QueryManagerInterface
 {
+    public const TIMESTAMP_FORMAT = 'Y-m-d H:i:s T';
     private const NEED_NEW_CONNECTION = 0;
     private const CONNECTION_OPENED = 1;
-
-    public const TIMESTAMP_FORMAT = 'Y-m-d H:i:s T';
 
     private $pomm;
     private $queryManager;
@@ -44,11 +43,11 @@ class ConnectionQueryManager implements QueryManagerInterface
         string $port,
         string $database,
         string $username,
-        string $password
+        string $password,
     ) {
         $this->pomm = new Pomm([
             $database => [
-                'dsn' => "pgsql://$username:$password@$host:$port/$database",
+                'dsn' => "pgsql://{$username}:{$password}@{$host}:{$port}/{$database}",
                 'class:session_builder' => '\PommProject\Foundation\SessionBuilder',
             ],
         ]);
@@ -67,7 +66,7 @@ class ConnectionQueryManager implements QueryManagerInterface
             }
             if ($parameter instanceof \DateTime) {
                 $parameters[$index] = $parameter->format(
-                    self::TIMESTAMP_FORMAT
+                    self::TIMESTAMP_FORMAT,
                 );
 
                 continue;
@@ -87,7 +86,7 @@ class ConnectionQueryManager implements QueryManagerInterface
     public function shutdown(): void
     {
         $this->pomm->shutdown();
-        unset($this->queryManager);
+        $this->queryManager = null;
         $this->state = self::NEED_NEW_CONNECTION;
     }
 }

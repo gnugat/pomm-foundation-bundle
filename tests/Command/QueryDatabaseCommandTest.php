@@ -19,28 +19,28 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class QueryDatabaseCommandTest extends TestCase
 {
-    private const NON_EXISTING_DATABASE = <<<OUTPUT
+    private const NON_EXISTING_DATABASE = <<<'OUTPUT'
 
- [ERROR] The database does not exist
-
-
-OUTPUT;
-    private const DATABASE_QUERIED = <<<OUTPUT
- count
--------
-     0
-(1 row)
+         [ERROR] The database does not exist
 
 
-OUTPUT;
-    private const QUERY_ERROR = <<<OUTPUT
+        OUTPUT;
+    private const DATABASE_QUERIED = <<<'OUTPUT'
+         count
+        -------
+             0
+        (1 row)
 
- [ERROR] ERROR:  relation "my_table" does not exist
-LINE 1: SELECT COUNT(*) FROM my_table;
-                             ^
+
+        OUTPUT;
+    private const QUERY_ERROR = <<<'OUTPUT'
+
+         [ERROR] ERROR:  relation "my_table" does not exist
+        LINE 1: SELECT COUNT(*) FROM my_table;
+                                     ^
 
 
-OUTPUT;
+        OUTPUT;
 
     private ApplicationTester $applicationTester;
 
@@ -56,7 +56,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotQueryNonExistingDatabase(): void
+    public function it_cannot_query_non_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -75,7 +75,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itQueriesDatabase(): void
+    public function it_queries_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -105,7 +105,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotQueryErrors(): void
+    public function it_cannot_query_errors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

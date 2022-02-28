@@ -20,7 +20,7 @@ class ExecuteQuery
         private string $port,
         private string $database,
         private string $username,
-        private string $password = ''
+        private string $password = '',
     ) {
     }
 
@@ -41,7 +41,7 @@ class ExecuteQuery
                 $this->username,
                 $this->password,
             ],
-            "$query 2>&1"
+            "{$query} 2>&1",
         ), $output, $exitCode);
         $output = implode("\n", $output);
         if (self::EXIT_SUCCESS !== $exitCode) {
