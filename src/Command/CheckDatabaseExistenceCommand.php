@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CheckDatabaseExistenceCommand extends Command
 {
     public function __construct(
-        private CheckDatabaseExistenceHandler $checkDatabaseExistenceHandler
+        private CheckDatabaseExistenceHandler $checkDatabaseExistenceHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class CheckDatabaseExistenceCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:check-existence')
-            ->setDescription('Creates the database')
-        ;
+            ->setDescription('Creates the database');
     }
 
     /**
@@ -40,7 +39,7 @@ class CheckDatabaseExistenceCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         $output->writeln('');
         $output->writeln('// Checking the database\'s existence');
@@ -49,7 +48,7 @@ class CheckDatabaseExistenceCommand extends Command
         $doesExist = $this->checkDatabaseExistenceHandler->handle();
 
         $output->writeln(
-            'The database does'.($doesExist ? '' : ' not').' exist'
+            'The database does'.($doesExist ? '' : ' not').' exist',
         );
         $output->writeln('');
 

@@ -18,7 +18,7 @@ class LaunchDatabaseConsoleHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private LaunchDatabaseConsole $launchDatabaseConsole
+        private LaunchDatabaseConsole $launchDatabaseConsole,
     ) {
     }
 

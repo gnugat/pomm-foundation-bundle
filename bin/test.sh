@@ -23,4 +23,5 @@ echo ''
 echo ' [OK] Test environment built'
 echo ''
 
-vendor/bin/phpunit
+vendor/bin/phpunit && \
+  PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --allow-risky=yes

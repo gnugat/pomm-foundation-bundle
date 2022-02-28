@@ -18,7 +18,7 @@ class ExecuteDatabaseFileHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private ExecuteDatabaseFile $executeDatabaseFile
+        private ExecuteDatabaseFile $executeDatabaseFile,
     ) {
     }
 

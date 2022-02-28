@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DumpDatabaseCommand extends Command
 {
     public function __construct(
-        private DumpDatabaseHandler $dumpDatabaseHandler
+        private DumpDatabaseHandler $dumpDatabaseHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class DumpDatabaseCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:dump')
-            ->setDescription('Dumps the database')
-        ;
+            ->setDescription('Dumps the database');
     }
 
     /**
@@ -40,7 +39,7 @@ class DumpDatabaseCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         try {
             $output->writeln($this->dumpDatabaseHandler->handle());

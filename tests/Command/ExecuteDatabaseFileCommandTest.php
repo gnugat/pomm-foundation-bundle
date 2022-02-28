@@ -25,62 +25,62 @@ class ExecuteDatabaseFileCommandTest extends TestCase
     private const WRONG_SYNTAX_FILE = __DIR__.'/fixtures/wrong_syntax_file.sql';
     private const NON_EXISTING_FILE = __DIR__.'/fixtures/non_existing_file.sql';
 
-    private const NON_EXISTING_DATABASE = <<<OUTPUT
+    private const NON_EXISTING_DATABASE = <<<'OUTPUT'
 
- [ERROR] The database does not exist
-
-
-OUTPUT;
-    private const FILE_EXECUTED = <<<OUTPUT
-CREATE TABLE
- count
--------
-     0
-(1 row)
+         [ERROR] The database does not exist
 
 
-OUTPUT;
-    private const DUMP_FILE_RESTORED = <<<OUTPUT
-SET
-SET
-SET
-SET
-SET
- set_config
-------------
+        OUTPUT;
+    private const FILE_EXECUTED = <<<'OUTPUT'
+        CREATE TABLE
+         count
+        -------
+             0
+        (1 row)
 
-(1 row)
 
-SET
-SET
-SET
-SET
-CREATE EXTENSION
-COMMENT
+        OUTPUT;
+    private const DUMP_FILE_RESTORED = <<<'OUTPUT'
+        SET
+        SET
+        SET
+        SET
+        SET
+         set_config
+        ------------
 
-OUTPUT;
+        (1 row)
+
+        SET
+        SET
+        SET
+        SET
+        CREATE EXTENSION
+        COMMENT
+
+        OUTPUT;
     private const WRONG_QUERY_FILE_ERROR = <<<'OUTPUT'
 
- [ERROR] psql:%filename%:1: ERROR:  relation "my_table" does not exist
-LINE 1: SELECT COUNT(*) FROM my_table;
-                             ^
+         [ERROR] psql:%filename%:1: ERROR:  relation "my_table" does not exist
+        LINE 1: SELECT COUNT(*) FROM my_table;
+                                     ^
 
 
-OUTPUT;
+        OUTPUT;
     private const WRONG_SYNTAX_FILE_ERROR = <<<'OUTPUT'
 
- [ERROR] psql:%filename%:3: ERROR:  syntax error at or near "<?"
-LINE 1: <?php
-        ^
+         [ERROR] psql:%filename%:3: ERROR:  syntax error at or near "<?"
+        LINE 1: <?php
+                ^
 
 
-OUTPUT;
+        OUTPUT;
     private const NON_EXISTING_FILE_ERROR = <<<'OUTPUT'
 
- [ERROR] %filename%: No such file or directory
+         [ERROR] %filename%: No such file or directory
 
 
-OUTPUT;
+        OUTPUT;
 
     private ApplicationTester $applicationTester;
 
@@ -96,7 +96,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotQueryNonExistingDatabase(): void
+    public function it_cannot_query_non_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -115,7 +115,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itExecutesDatabaseFile(): void
+    public function it_executes_database_file(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -141,7 +141,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCanRestoreDatabaseFromDumpFile(): void
+    public function it_can_restore_database_from_dump_file(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -178,7 +178,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotExecuteQueryErrors(): void
+    public function it_cannot_execute_query_errors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -201,9 +201,9 @@ OUTPUT;
             str_replace(
                 '%filename%',
                 self::WRONG_QUERY_FILE,
-                self::WRONG_QUERY_FILE_ERROR
+                self::WRONG_QUERY_FILE_ERROR,
             ),
-            $output
+            $output,
         );
         self::assertSame(ExitCode::ERROR, $exitCode);
     }
@@ -211,7 +211,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotExecuteSyntaxErrors(): void
+    public function it_cannot_execute_syntax_errors(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -234,9 +234,9 @@ OUTPUT;
             str_replace(
                 '%filename%',
                 self::WRONG_SYNTAX_FILE,
-                self::WRONG_SYNTAX_FILE_ERROR
+                self::WRONG_SYNTAX_FILE_ERROR,
             ),
-            $output
+            $output,
         );
         self::assertSame(ExitCode::ERROR, $exitCode);
     }
@@ -244,7 +244,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotExecuteNonExistingFiles(): void
+    public function it_cannot_execute_non_existing_files(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -267,9 +267,9 @@ OUTPUT;
             str_replace(
                 '%filename%',
                 self::NON_EXISTING_FILE,
-                self::NON_EXISTING_FILE_ERROR
+                self::NON_EXISTING_FILE_ERROR,
             ),
-            $output
+            $output,
         );
         self::assertSame(ExitCode::ERROR, $exitCode);
     }

@@ -19,12 +19,12 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class LaunchDatabaseConsoleCommandTest extends TestCase
 {
-    private const NON_EXISTING_DATABASE = <<<OUTPUT
+    private const NON_EXISTING_DATABASE = <<<'OUTPUT'
 
- [ERROR] The database does not exist
+         [ERROR] The database does not exist
 
 
-OUTPUT;
+        OUTPUT;
 
     private ApplicationTester $applicationTester;
 
@@ -40,7 +40,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotLaunchConsoleForNonExistingDatabase(): void
+    public function it_cannot_launch_console_for_non_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

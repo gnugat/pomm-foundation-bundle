@@ -16,7 +16,7 @@ class DumpDatabase
     private const DUMP_DATABASE = "PGPASSWORD='%password%' pg_dump -U %username% -p %port% -h %host% -w -Fp -x %database%";
 
     public function __construct(
-        private ExecuteQuery $executeQuery
+        private ExecuteQuery $executeQuery,
     ) {
     }
 

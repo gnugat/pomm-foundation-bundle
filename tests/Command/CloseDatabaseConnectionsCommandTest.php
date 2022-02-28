@@ -33,7 +33,7 @@ class CloseDatabaseConnectionsCommandTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNothingWhenDatabaseDoesNotExist(): void
+    public function it_does_nothing_when_database_does_not_exist(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -50,7 +50,7 @@ class CloseDatabaseConnectionsCommandTest extends TestCase
     /**
      * @test
      */
-    public function itClosesDatabaseConnections(): void
+    public function it_closes_database_connections(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

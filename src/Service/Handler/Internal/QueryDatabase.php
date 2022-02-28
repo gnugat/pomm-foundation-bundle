@@ -16,7 +16,7 @@ class QueryDatabase
     private const QUERY = "PGPASSWORD='%password%' psql -U %username% -p %port% -h %host% -w -d %database% -c \"%sql%\"";
 
     public function __construct(
-        private ExecuteQuery $executeQuery
+        private ExecuteQuery $executeQuery,
     ) {
     }
 
@@ -25,7 +25,7 @@ class QueryDatabase
         return $this->executeQuery->execute(str_replace(
             '%sql%',
             addslashes($sql),
-            self::QUERY
+            self::QUERY,
         ));
     }
 }

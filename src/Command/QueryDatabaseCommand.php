@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class QueryDatabaseCommand extends Command
 {
     public function __construct(
-        private QueryDatabaseHandler $queryDatabaseHandler
+        private QueryDatabaseHandler $queryDatabaseHandler,
     ) {
         parent::__construct();
     }
@@ -33,8 +33,7 @@ class QueryDatabaseCommand extends Command
         $this
             ->setName('gnugat-pomm-foundation:database:query')
             ->setDescription('Queries the database')
-            ->addArgument('sql', InputArgument::REQUIRED)
-        ;
+            ->addArgument('sql', InputArgument::REQUIRED);
     }
 
     /**
@@ -42,11 +41,11 @@ class QueryDatabaseCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         try {
             $results = $this->queryDatabaseHandler->handle(
-                $input->getArgument('sql')
+                $input->getArgument('sql'),
             );
 
             $output->writeln($results);

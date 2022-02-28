@@ -20,16 +20,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ExecuteDatabaseFileCommand extends Command
 {
     private const HELP = <<<'TEXT'
-Also allows restoring a database using a dump file:
+        Also allows restoring a database using a dump file:
 
-    bin/console gnugat-pomm-foundation:database:dump > /tmp/dump.sql
-    bin/console gnugat-pomm-foundation:database:drop
-    bin/console gnugat-pomm-foundation:database:create
-    bin/console gnugat-pomm-foundation:database:execute-file /tmp/dump.sql
-TEXT;
+            bin/console gnugat-pomm-foundation:database:dump > /tmp/dump.sql
+            bin/console gnugat-pomm-foundation:database:drop
+            bin/console gnugat-pomm-foundation:database:create
+            bin/console gnugat-pomm-foundation:database:execute-file /tmp/dump.sql
+        TEXT;
 
     public function __construct(
-        private ExecuteDatabaseFileHandler $executeDatabaseFileHandler
+        private ExecuteDatabaseFileHandler $executeDatabaseFileHandler,
     ) {
         parent::__construct();
     }
@@ -43,8 +43,7 @@ TEXT;
             ->setName('gnugat-pomm-foundation:database:execute-file')
             ->setDescription('Executes the database file')
             ->setHelp(self::HELP)
-            ->addArgument('filename', InputArgument::REQUIRED)
-        ;
+            ->addArgument('filename', InputArgument::REQUIRED);
     }
 
     /**
@@ -52,11 +51,11 @@ TEXT;
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         try {
             $results = $this->executeDatabaseFileHandler->handle(
-                $input->getArgument('filename')
+                $input->getArgument('filename'),
             );
 
             $output->writeln($results);

@@ -20,7 +20,7 @@ class DropDatabaseHandler
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
         private CloseDatabaseConnections $closeDatabaseConnections,
-        private DropDatabase $dropDatabase
+        private DropDatabase $dropDatabase,
     ) {
     }
 

@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class LaunchDatabaseConsoleCommand extends Command
 {
     public function __construct(
-        private LaunchDatabaseConsoleHandler $launchDatabaseConsoleHandler
+        private LaunchDatabaseConsoleHandler $launchDatabaseConsoleHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class LaunchDatabaseConsoleCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:launch-console')
-            ->setDescription('Launches the database console')
-        ;
+            ->setDescription('Launches the database console');
     }
 
     /**
@@ -40,7 +39,7 @@ class LaunchDatabaseConsoleCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         try {
             $this->launchDatabaseConsoleHandler->handle();

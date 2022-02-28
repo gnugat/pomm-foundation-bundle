@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DropDatabaseCommand extends Command
 {
     public function __construct(
-        private DropDatabaseHandler $dropDatabaseHandler
+        private DropDatabaseHandler $dropDatabaseHandler,
     ) {
         parent::__construct();
     }
@@ -31,8 +31,7 @@ class DropDatabaseCommand extends Command
     {
         $this
             ->setName('gnugat-pomm-foundation:database:drop')
-            ->setDescription('Drops the database')
-        ;
+            ->setDescription('Drops the database');
     }
 
     /**
@@ -40,7 +39,7 @@ class DropDatabaseCommand extends Command
      */
     protected function execute(
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): int {
         $output->writeln('');
         $output->writeln('// Dropping the database');

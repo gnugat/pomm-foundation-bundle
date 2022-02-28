@@ -18,7 +18,7 @@ class CreateDatabaseHandler
 {
     public function __construct(
         private CheckDatabaseExistence $checkDatabaseExistence,
-        private CreateDatabase $createDatabase
+        private CreateDatabase $createDatabase,
     ) {
     }
 

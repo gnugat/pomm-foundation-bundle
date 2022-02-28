@@ -19,12 +19,12 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class DumpDatabaseCommandTest extends TestCase
 {
-    private const NON_EXISTING_DATABASE = <<<OUTPUT
+    private const NON_EXISTING_DATABASE = <<<'OUTPUT'
 
- [ERROR] The database does not exist
+         [ERROR] The database does not exist
 
 
-OUTPUT;
+        OUTPUT;
 
     private ApplicationTester $applicationTester;
 
@@ -40,7 +40,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itCannotDumpNonExistingDatabase(): void
+    public function it_cannot_dump_non_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -58,7 +58,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itDumpsDatabase(): void
+    public function it_dumps_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -82,11 +82,11 @@ OUTPUT;
 
         self::assertTrue(1 === preg_match(
             '/PostgreSQL database dump/',
-            $output
+            $output,
         ), $output);
         self::assertTrue(1 === preg_match(
             '/CREATE TABLE public.my_table/',
-            $output
+            $output,
         ), $output);
         self::assertSame(ExitCode::SUCCESS, $exitCode);
     }

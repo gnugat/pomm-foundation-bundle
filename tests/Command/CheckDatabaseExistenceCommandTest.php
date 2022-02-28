@@ -19,26 +19,26 @@ use tests\Gnugat\PommFoundationBundle\App\AppKernel;
 
 class CheckDatabaseExistenceCommandTest extends TestCase
 {
-    private const NON_EXISTING_DATABASE = <<<OUTPUT
+    private const NON_EXISTING_DATABASE = <<<'OUTPUT'
 
-// Checking the database's existence
+        // Checking the database's existence
 
-The database does not exist
+        The database does not exist
 
- [OK] Database existence checked
-
-
-OUTPUT;
-    private const EXISTING_DATABASE = <<<OUTPUT
-
-// Checking the database's existence
-
-The database does exist
-
- [OK] Database existence checked
+         [OK] Database existence checked
 
 
-OUTPUT;
+        OUTPUT;
+    private const EXISTING_DATABASE = <<<'OUTPUT'
+
+        // Checking the database's existence
+
+        The database does exist
+
+         [OK] Database existence checked
+
+
+        OUTPUT;
 
     private ApplicationTester $applicationTester;
 
@@ -54,7 +54,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itChecksNonExistingDatabase(): void
+    public function it_checks_non_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',
@@ -72,7 +72,7 @@ OUTPUT;
     /**
      * @test
      */
-    public function itChecksExistingDatabase(): void
+    public function it_checks_existing_database(): void
     {
         $this->applicationTester->run([
             'gnugat-pomm-foundation:database:drop',

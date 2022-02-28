@@ -29,10 +29,10 @@ class ClosingConnectionListenerTest extends TestCase
     /**
      * @test
      */
-    public function itHasACloseConnectionListener(): void
+    public function it_has_a_close_connection_listener(): void
     {
         $listeners = $this->container->get('event_dispatcher')->getListeners('kernel.terminate');
-        $isCloseConnectionIn = function ($listeners) {
+        $isCloseConnectionIn = static function ($listeners) {
             foreach ($listeners as $listener) {
                 if ($listener[0] instanceof ClosingConnectionListener) {
                     return true;
